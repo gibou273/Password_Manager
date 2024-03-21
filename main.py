@@ -1,4 +1,5 @@
 from tkinter import Tk, Label, Button, Entry
+from functions import generate_password, save_password, search_info
 
 window = Tk()
 window.title("Password Generator App")
@@ -13,7 +14,7 @@ website_label.grid(row=1, column=0)
 website_entry = Entry(width=35)
 website_entry.grid(row=1, column=1, columnspan=2)
 website_entry.focus()
-search_button = Button(text="Search", fg="white", bg="green")
+search_button = Button(text="Search", fg="white", bg="green", command=lambda: search_info(website_entry))
 search_button.grid(row=1, column=4)
 # Email
 username_label = Label(text="Email/Username:")
@@ -27,10 +28,11 @@ password_label.grid(row=3, column=0)
 password_entry = Entry(width=18)
 password_entry.grid(row=3, column=1)
 # Generate password button
-generate_password_button = Button(text="Generate Password", width=14)
+generate_password_button = Button(text="Generate Password", width=14, command=lambda: generate_password(password_entry))
 generate_password_button.grid(row=3, column=2)
 # Add Button
-add_button = Button(text="Add", width=33, fg="white", bg="blue")
+add_button = Button(text="Add", width=33, fg="white", bg="blue",
+                    command=lambda: save_password(website_entry, username_entry, password_entry))
 add_button.grid(row=4, column=1, columnspan=2)
 
 
